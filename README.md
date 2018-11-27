@@ -1,4 +1,4 @@
-# SCORM-LearningManagementSystem
+# SCORM - Learning Management System
 
 This is an open source demonstration of a SCORM LMS (Learning Management System).
 It implements the SCORM 1.2 standard (with some support for SCORM 2004).
