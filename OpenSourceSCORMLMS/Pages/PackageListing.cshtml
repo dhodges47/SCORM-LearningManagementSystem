@@ -1,0 +1,50 @@
+﻿@page
+@model OpenSourceSCORMLMS.Pages.PackageListingModel
+@{
+    ViewData["Title"] = "PackageListing";
+}
+
+<h2>Package Listing</h2>
+
+
+<h1>Uploaded Packages</h1>
+<table id="gridPackages" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>ModuleID</th>
+            <th>Date Uploaded </th>
+           <th>In study area?</th>  
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listPackagesWithUser)
+        {
+        <tr>
+            <td>@item.title
+
+            <td>
+                @item.id
+            </td>
+            <td>
+                @item.DateUploaded
+            </td>
+           
+            <td>
+                @if (item.user_module_id > 0){
+              <p>Yes</p> 
+                }
+            </td>
+               
+            <td>
+                <a href="Package?id=@item.id">Package Details</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

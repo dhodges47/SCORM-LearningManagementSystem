@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="_6Zl1zjajaBc_course_id" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+      <general>
+        <title>
+          <langstring xml:lang="x-none">PHILIPS Elearning Review (w HTML5)</langstring>
+        </title>
+      </general>
+      <lifecycle>
+        <version>
+          <langstring xml:lang="x-none">1</langstring>
+        </version>
+        <status>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">Final</langstring>
+          </value>
+        </status>
+      </lifecycle>
+      <metametadata>
+        <metadatascheme>ADL SCORM 1.2</metadatascheme>
+      </metametadata>
+      <educational>
+        <typicallearningtime>
+          <datetime>PT0H0M0S</datetime>
+        </typicallearningtime>
+      </educational>
+      <rights>
+        <cost>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </cost>
+        <copyrightandotherrestrictions>
+          <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+          </source>
+          <value>
+            <langstring xml:lang="x-none">yes</langstring>
+          </value>
+        </copyrightandotherrestrictions>
+      </rights>
+    </lom>
+  </metadata>
+  <organizations default="PHILIPS_Elearning_Review_(w_HTML5)_ORG">
+    <organization identifier="PHILIPS_Elearning_Review_(w_HTML5)_ORG">
+      <title>PHILIPS Elearning Review (w HTML5)</title>
+      <item identifier="Shoulder_Ultrasound_-_Approach_SCO" isvisible="true" identifierref="__6Zl1zjajaBc_course_id_RES">
+        <title>PHILIPS Elearning Review (w HTML5)</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="__6Zl1zjajaBc_course_id_RES" type="webcontent" href="index_lms.html" adlcp:scormtype="sco">
+      <file href="story_content/thumbnail.jpg" />
+      <file href="story_content/6P3EJJcqZuS_80_DX316_DY316.jpg" />
+      <file href="mobile/6P3EJJcqZuS_80_DX316_DY316_CX158_CY60.jpg" />
+      <file href="story_content/66P2jQPotjZ_80_DX276_DY276.jpg" />
+      <file href="mobile/66P2jQPotjZ_80_DX276_DY276_CX137_CY60.jpg" />
+      <file href="story_content/video_6lszvG1exri_22_48_720x396.mp4" />
+      <file href="mobile/video_6lszvG1exri_22_48_720x396.jpg" />
+      <file href="mobile/66P2jQPotjZ_80_DX276_DY276_CX138_CY60.jpg" />
+      <file href="story_content/6EYrrpwzvjH_80_DX316_DY316.jpg" />
+      <file href="mobile/6EYrrpwzvjH_80_DX316_DY316_CX158_CY60.jpg" />
+      <file href="story_content/675vsD2gJ90_80_DX328_DY328.jpg" />
+      <file href="mobile/675vsD2gJ90_80_DX328_DY328_CX164_CY11.jpg" />
+      <file href="mobile/6EYrrpwzvjH_80_DX316_DY316_CX158_CY13.jpg" />
+      <file href="story_content/6joxULyX2aC_80_DX92_DY92.swf" />
+      <file href="mobile/6joxULyX2aC_80_DX92_DY92_CX46_CY46.png" />
+      <file href="mobile/6joxULyX2aC_80_DX92_DY92_CX46_CY46.swf" />
+      <file href="meta.xml" />
+      <file href="story_content/FontFactory.swf" />
+      <file href="story_content/fonts.swf" />
+      <file href="story_content/fonts.xml" />
+      <file href="mobile/fonts.js" />
+      <file href="mobile/5cPUuDbD7ic.png" />
+      <file href="story_content/logo.swf" />
+      <file href="story_content/frame.xml" />
+      <file href="story_content/frame.js" />
+      <file href="story_content/user.js" />
+      <file href="mobile/app_store.png" />
+      <file href="mobile/mobile_icon.png" />
+      <file href="mobile/linen_background.jpg" />
+      <file href="story_unsupported.html" />
+      <file href="mobile/player.css" />
+      <file href="mobile/player_compiled.js" />
+      <file href="story.swf" />
+      <file href="story_content/frame.swf" />
+      <file href="story_content/slides/6kQiC2W3Q27.swf" />
+      <file href="story_content/slides/6JMGJ6yMqmF.swf" />
+      <file href="mobile/slides/6kQiC2W3Q27.gz" />
+      <file href="story_content/slides/6piNgDkH77T.swf" />
+      <file href="mobile/slides/6JMGJ6yMqmF.gz" />
+      <file href="mobile/slides/6piNgDkH77T.gz" />
+      <file href="mobile/slides/6JMGJ6yMqmF.js" />
+      <file href="mobile/slides/6kQiC2W3Q27.js" />
+      <file href="mobile/slides/6piNgDkH77T.js" />
+      <file href="story_content/data.swf" />
+      <file href="mobile/data.gz" />
+      <file href="mobile/data.js" />
+      <file href="mobile/masks.js" />
+      <file href="story.html" />
+      <file href="story_html5.html" />
+      <file href="index_lms_html5.html" />
+      <file href="story_content/blank.html" />
+      <file href="story_content/story.js" />
+      <file href="amplaunch.html" />
+      <file href="mobile/mobileinstall.html" />
+      <file href="index_lms.html" />
+      <file href="lms/AICCComm.html" />
+      <file href="lms/AICCFunctions.js" />
+      <file href="lms/API.js" />
+      <file href="lms/APIConstants.js" />
+      <file href="lms/blank.html" />
+      <file href="lms/browsersniff.js" />
+      <file href="lms/Configuration.js" />
+      <file href="lms/goodbye.html" />
+      <file href="lms/lms.js" />
+      <file href="lms/LMSAPI.js" />
+      <file href="lms/NONEFunctions.js" />
+      <file href="lms/SCORM2004Functions.js" />
+      <file href="lms/SCORMFunctions.js" />
+      <file href="lms/UtilityFunctions.js" />
+    </resource>
+  </resources>
+</manifest>

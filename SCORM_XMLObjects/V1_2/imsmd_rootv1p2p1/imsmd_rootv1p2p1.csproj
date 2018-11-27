@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>7.10.3077</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BC758C30-DC21-2F42-869C-969999F6564E}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>imsmd_rootv1p2p1</AssemblyName>
+    <AssemblyOriginatorKeyFile />
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>imsmd_rootv1p2p1</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Altova, Version=1.0.1875.28477, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Altova\bin\Debug\Altova.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aggregationlevelType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="annotationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="catalogentryType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="catalogType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="centityType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classificationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="contextType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="contributeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="copyrightandotherrestrictionsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="costType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="coverageType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="datetimeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dateType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="descriptionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="difficultyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="durationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="educationalType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="entryType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="formatType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generalType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="idType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imsmd_rootv1p2p1Doc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="installationremarksType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="intendedenduserroleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="interactivitylevelType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="interactivitytypeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="keywordType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="kindType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="langstringType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="learningresourcetypeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lifecycleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="locationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lomType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="maximumversionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="metadataschemeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="metametadataType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="minimumversionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="nameType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="otherplatformrequirementsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="personType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="purposeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="relationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="requirementType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="resourceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rightsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="roleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="semanticdensityType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="sizeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="sourceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="statusType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="stringType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="structureType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="taxonpathType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="taxonType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="technicalType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="titleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typeType2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typicalagerangeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typicallearningtimeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="valueType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="versionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

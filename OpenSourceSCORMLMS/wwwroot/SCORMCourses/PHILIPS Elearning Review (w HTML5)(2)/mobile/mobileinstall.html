@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>PHILIPS Elearning Review (w HTML5)</title>
+			
+	<!-- META -->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+	<style>
+		html,body,div,h1,p,a{margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}
+		a img{border:0; width 290}
+		body{font-family:Helvetica,Arial,Verdana,sans-serif;line-height:1.5;color:#434750;background:#737d85;position:relative;font-size:75%}
+		h1{font-size:3em;line-height:1;margin-bottom:.5em;font-weight:400;color:#434750}
+		a,a:focus,a:hover{color:#434750;text-decoration:none;outline:0}
+		.button{float:left;font-size:14px;font-weight:700;color:#fff;text-shadow:0 -1px 0 rgba(0,0,0,.75);padding:5px 22px 0;height:25px;border:1px solid #010101;-webkit-box-shadow:0 1px 0 rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.25);-webkit-border-radius:5px;background:-webkit-gradient(linear,left top,left bottom,from(#5d636b),to(#25272a),color-stop(.5,#494e54),color-stop(.51,#35393d))}
+		body.launch{background:url(linen_background.jpg) repeat}
+		div.container{background:#fff;height:490px;margin:45px;padding:30px;-webkit-border-radius:5px;-webkit-box-shadow:0 0 20px rgba(0,0,0,.75)}
+		div.screenshot{float:right;width:390px;padding-left:20px;padding-bottom:10px}
+		div.screenshot img{-webkit-box-shadow:0 8px 6px -2px rgba(0,0,0,.2); width: 360px;}
+		div.container div.launch_meta{float:left;width:450px}
+		div.container h1{color:#3c4046;font-weight:700;font-size:25px;line-height:1.2em;font-family:'Helvetica Neue',Helvetica,Arial}
+		div.container p{font-size:16px;line-height:1.4em;font-family:'Helvetica Neue',Helvetica,Arial;margin:0 0 1.4em}
+		div.container a.button{font-size:20px;color:#fff;background:#0272ed;text-shadow:0 1px 0 rgba(11,62,180,1);padding:5px 22px 12px;border:1px solid #0b3eb4;-webkit-box-shadow:0 1px 0 rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.25);-webkit-border-radius:5px;background:-webkit-gradient(linear,left top,left bottom,from(#039ef4),to(#0b3eb4))}
+		div.mobile_app{padding-left:148px;padding-top:20px}
+		div.mobile_app h1{margin:0;line-height:1.4em}
+		div.mobile_app a{color:#027fef;text-decoration:underline}
+		div.container a.app_store{width:172px;height:54px;text-indent:-9000px;display:block;background:url(app_store.png)}
+		@media only screen and (max-device-width:1024px) and (orientation:portrait){
+			div.container{height:750px}
+			div.screenshot{width:290px}
+			div.screenshot img{width:290px}
+			div.container div.launch_meta{float:left;width:300px}
+			div.mobile_app h1{font-size:24px}
+		}
+
+	</style>
+	<script>
+		var g_strHash = document.location.hash;
+		document.location.hash = "";
+		
+		function InstallApp()
+		{
+			setTimeout(RedirectLaunchPage, 50);
+			
+			var strAppUrl = "itms-apps://itunes.apple.com/us/app/articulate-mobile-player/id505546381?ls=1&mt=8";
+			
+			document.location = strAppUrl;
+			
+			return false;
+		}
+		
+		function RedirectLaunchPage()
+		{
+			document.location = "../amplaunch.html" + g_strHash;
+		}
+	</script>
+	
+</head>
+
+<body class="launch">
+
+	<div class="wrap">
+		<div class="container">
+			<a href="#" onclick="return InstallApp()"><img style="position:absolute;" src="mobile_icon.png"></img></a>
+			<div class="mobile_app">
+				<h1>Get the free Articulate Mobile Player app</h1>
+				<p>You'll need it to view your course on your iPad. Just <a href="#" onclick="return InstallApp()" title="Download the Articulate Mobile Player app">download</a> it from the App Store.</p>
+				<a href="#" onclick="return InstallApp()" class="app_store">Available on the App Store</a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

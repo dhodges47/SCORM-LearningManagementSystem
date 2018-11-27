@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-OpenSourceSCORMLMS-216CDD04-809C-4E90-8838-B15D3F9DACB5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="appsettings.Production..json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bower" Version="1.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="SCORMPackages\" />
+    <Folder Include="wwwroot\SCORMCourses\" />
+    <Folder Include="wwwroot\SCORMPackages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="adlcp_rootv1p2">
+      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\adlcp_rootv1p2.dll</HintPath>
+    </Reference>
+    <Reference Include="adlcp_v1P3">
+      <HintPath>..\SCORM_XMLObjects\V1_3\adlcp_v1p3\bin\Debug\netstandard2.0\adlcp_v1P3.dll</HintPath>
+    </Reference>
+    <Reference Include="Altova">
+      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\Altova.dll</HintPath>
+    </Reference>
+    <Reference Include="imsmd_rootv1p2p1">
+      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\imsmd_rootv1p2p1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "adlcp_rootv1p2", "adlcp_rootv1p2.csproj", "{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altova", "..\Altova\Altova.csproj", "{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}.0 = {D43E6C54-2DF5-454E-9566-DFFE2F3A6946}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}.Debug.ActiveCfg = Debug|.NET
+		{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}.Debug.Build.0 = Debug|.NET
+		{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}.Release.ActiveCfg = Release|.NET
+		{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}.Release.Build.0 = Release|.NET
+		{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}.Debug.ActiveCfg = Debug|.NET
+		{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}.Debug.Build.0 = Debug|.NET
+		{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}.Release.ActiveCfg = Release|.NET
+		{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

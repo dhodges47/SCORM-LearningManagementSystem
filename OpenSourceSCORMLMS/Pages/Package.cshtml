@@ -1,0 +1,21 @@
+﻿@page
+@model OpenSourceSCORMLMS.Pages.PackageModel
+@{
+    ViewData["Title"] = "Package";
+}
+<div class="container mt-5">
+    <form asp-controller="Package" asp-action="Add" method="post">
+        <label asp-for="package.Course_title"></label>: @Html.DisplayFor(m => m.package.Course_title)<br />
+        <label asp-for="package.DateUploaded"></label>: @Html.DisplayFor(m => m.package.DateUploaded)<br />
+        <input type="hidden" name="id" value="@Model.package.id" />
+        @if (!Model.bUserHasCourse)
+        {
+            <input type="submit" value="Add to my study area" />
+        }
+        else
+        {
+            <label>You have this course in your study area.</label>
+        }
+    </form>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@page
+@model OpenSourceSCORMLMS.Pages.SCORMPlayerModel
+@{
+    ViewData["Title"] = "SCORMPlayer";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SCORM Player</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="/js/OutermostLMSV5.js"></script>
+</head>
+<body>
+        <div id="SCO1">
+            <iframe id="iframe1" src="@Model.sIframeSrc" style="width: 1440px; height: 775px; border: 0;"></iframe>
+        </div>
+        <div id="divDebug"></div>
+        <script type="text/javascript">
+            {
+               @Html.Raw(@Model.sLaunchParameters)
+            }
+            $(document).ready(function () {
+                var $iframes = $("iframe");
+
+                // Find & save the aspect ratio for all iframes
+                $iframes.each(function () {
+                    $(this).data("ratio", this.height / this.width)
+                        // Remove the hardcoded width & height attributes
+                        .removeAttr("width")
+                        .removeAttr("height");
+                });
+
+                // Resize the iframes when the window is resized
+                $(window).resize(function () {
+                    $iframes.each(function () {
+                        // Get the parent container's width
+                        var width = $(this).parent().width();
+                        $(this).width(width)
+                            .height(width * $(this).data("ratio"));
+                    });
+                    // Resize to fix all iframes on page load.
+                }).resize();
+            });
+        </script>
+</body>
+</html>
+
+

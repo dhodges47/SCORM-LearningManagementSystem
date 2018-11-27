@@ -1,0 +1,243 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{335BAB6F-97C1-0E4C-8CDE-7197939EC0E1}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>adlcp_rootv1p2</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>adlcp_rootv1p2</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="imsmd_rootv1p2p1">
+      <Name>imsmd_rootv1p2p1</Name>
+      <HintPath>..\imsmd_rootv1p2p1\bin\Debug\imsmd_rootv1p2p1.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\Altova\Altova.csproj">
+      <Name>Altova</Name>
+      <Project>{D43E6C54-2DF5-454E-9566-DFFE2F3A6946}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adlcp_itemType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="adlcp_metadataType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="adlcp_resourceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="adlcp_rootv1p2Doc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="datafromlmsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_dependencyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_fileType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_hrefType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_hrefType2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_identifierrefType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_identifierrefType2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_itemType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_manifestType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_metadataType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_organizationsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_organizationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_parametersType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_resourcesType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_resourceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_schemaType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_schemaversionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_structureType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_titleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_typeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imscp_versionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="locationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="masteryscoreType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="maxtimeallowedType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newSchemaType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newSchemaversionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="prerequisiteStringType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="prerequisitesType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scormType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="stringType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="timelimitactionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="typeType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
