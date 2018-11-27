@@ -18,7 +18,7 @@ It gives the ability to upload SCORM packages, play the courses in the built-in 
  Installation
  After cloning this repository, modify appsettings.json with your database information.
  
- After you create your database, you can run the application for the first time, and it should populate the database for you.
+ After you create your database, you can run the application from Visual Studio for the first time, and it should populate the database for you.
  If not, from the package manager console, run update-database.
  
 Consulting: Need help customizing this Application? Outermost Software can help!
