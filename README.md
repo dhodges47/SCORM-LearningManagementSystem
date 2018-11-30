@@ -34,7 +34,7 @@ It gives the ability to upload SCORM packages, play the courses in the built-in 
 
 Need help customizing this Application? Outermost Software can help!
     
-   *           Installation
-   *           Enhancements
-   *          .Net Programming
+   * Installation
+   * Enhancements
+   * .Net Programming
         
