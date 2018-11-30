@@ -21,6 +21,13 @@ It gives the ability to upload SCORM packages, play the courses in the built-in 
  After you create your database, you can run the application from Visual Studio for the first time, and it should populate the database for you.
  If not, from the package manager console, run update-database.
  
+ Usage
+ When you first run the application, follow these steps:
+ 1. Create a login for yourself
+ 2. Upload a SCORM package
+ 3. Add the SCORM course to your courses (Main Menu: "All Courses". Click on your course and then click "Package Details", then click "Add to my study area".
+ 4. Run the course (Main Menu: My Courses for Study, then click "Launch this course"
+ 
 Consulting: Need help customizing this Application? Outermost Software can help!
         <ul>
            <li>Installation</li>
