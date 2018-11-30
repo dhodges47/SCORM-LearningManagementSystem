@@ -14,12 +14,11 @@ namespace OpenSourceSCORMLMS
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .ConfigureLogging((hostingContext, logging) =>
-            {
-                logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                logging.AddConsole();
-                logging.AddDebug();
-            })
+             .ConfigureLogging((hostingContext, builder) =>
+             {
+                 builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                 builder.AddFile(o => o.RootPath = System.AppContext.BaseDirectory);
+             })
                 .UseStartup<Startup>();
     }
 }
