@@ -643,7 +643,7 @@ namespace OpenSourceSCORMLMS.Helpers
                     if (isCMIString4096(o.dataValue))
                     {
                         int cmi_data_id = DatabaseHelper.GetCmiDataID(o.userId, o.scoIdentifier, o.scormCourseId);
-                        DatabaseHelper.SetValueSuspendData(cmi_data_id, DataItem);
+                        DatabaseHelper.SetValueSuspendData(cmi_data_id, o.dataValue);
                     }
                     else
                     {
