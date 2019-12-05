@@ -22,22 +22,13 @@
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="SCORMPackages\" />
-    <Folder Include="wwwroot\SCORMCourses\" />
-    <Folder Include="wwwroot\SCORMPackages\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="adlcp_rootv1p2">
-      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\adlcp_rootv1p2.dll</HintPath>
-    </Reference>
-    <Reference Include="adlcp_v1P3">
-      <HintPath>..\SCORM_XMLObjects\V1_3\adlcp_v1p3\bin\Debug\netstandard2.0\adlcp_v1P3.dll</HintPath>
-    </Reference>
-    <Reference Include="Altova">
-      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\Altova.dll</HintPath>
-    </Reference>
-    <Reference Include="imsmd_rootv1p2p1">
-      <HintPath>..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\bin\Debug\imsmd_rootv1p2p1.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\SCORM_XMLObjects\V1_2\adlcp_rootv1p2\adlcp_rootv1p2.csproj" />
+    <ProjectReference Include="..\SCORM_XMLObjects\V1_2\Altova\Altova.csproj" />
+    <ProjectReference Include="..\SCORM_XMLObjects\V1_2\imscp_rootv1p1p2\imscp_rootv1p1p2.csproj" />
+    <ProjectReference Include="..\SCORM_XMLObjects\V1_2\imsmd_rootv1p2p1\imsmd_rootv1p2p1.csproj" />
+    <ProjectReference Include="..\SCORM_XMLObjects\V1_3\adlcp_v1p3\adlcp_v1P3.csproj" />
   </ItemGroup>
 </Project>
