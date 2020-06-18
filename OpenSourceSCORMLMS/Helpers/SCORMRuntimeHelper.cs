@@ -1569,7 +1569,7 @@ namespace OpenSourceSCORMLMS.Helpers
         public bool isCMITimespan(string DataValue)
         {
             // CMITimeSpan is like "HHHH:MM:SS.SS";
-            if (DataValue.Length > 13) return false;
+            if (DataValue == null || DataValue.Length > 13) return false;
             string delimStr = ":";
             char[] delimiter = delimStr.ToCharArray();
             string[] s = DataValue.Split(delimiter, 3);

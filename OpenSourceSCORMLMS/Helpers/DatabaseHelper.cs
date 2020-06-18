@@ -352,7 +352,11 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                    cmi_data_id = context.cmi_data.Where(ix => ix.SCORM_courses_id == iSCO_Course_id && ix.user_id == user_id).OrderByDescending(iy => iy.id).FirstOrDefault().id;
+                    var cmi_data = context.cmi_data.Where(ix => ix.SCORM_courses_id == iSCO_Course_id && ix.user_id == user_id).OrderByDescending(iy => iy.id).FirstOrDefault();
+                    if (cmi_data != null)
+                    {
+                        cmi_data_id = cmi_data.id;
+                    }
                 }
             }
             catch (Exception ex)

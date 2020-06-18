@@ -77,7 +77,7 @@ namespace OpenSourceSCORMLMS
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(env.ContentRootPath,  Helpers.ConfigurationHelper.CourseFolder)),
-                RequestPath = "/SCORM"
+                RequestPath = "/SCORMCourses"
             });
 
         }
