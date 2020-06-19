@@ -137,7 +137,7 @@ function apiclass() {
         // LMSInfo object carries arguments to the server and back
         var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier));
         WriteToDebug("LMSInitialize: " + lmsInfo);
-        var response = new Object;
+        var that = this; // get reference to current API instance
         $.ajax({
             type: "POST",
             url: "/api/LMSInitialize",
@@ -147,28 +147,28 @@ function apiclass() {
             async: false,
             success: function (response) {
                 lmsInfo = response;
-                API.LastError = lmsInfo.errorCode;
-                API.LastErrorString = lmsInfo.errorString
+                that.LastError = lmsInfo.errorCode;
+                that.LastErrorString = lmsInfo.errorString
                 // check error code from server
                 if (lmsInfo.errorCode != "0") {
-                    API.initialized = false;
+                    that.initialized = false;
                 }
                 else {
-                    API.initialized = true;
+                    that.initialized = true;
                 }
-                return (API.initialized) ? "true" : "false";
+                //    return (API.initialized) ? "true" : "false";
             },
             error: function (request, error) {
                 // Ajax call failed
-                API.LastError = "101"; //general exception
-                API.LastErrorString = error.Message;
-                API.LastErrorDiagnostic = "AJAX error";
+                that.LastError = "101"; //general exception
+                that.LastErrorString = error.Message;
+                that.LastErrorDiagnostic = "AJAX error";
                 WriteToDebug("Ajax error");
                 WriteToDebug(error.Message);
                 return "false";
             }
         });
-        return (API.initialized) ? "true" : "false";
+        return (this.initialized) ? "true" : "false";
     }
 	/*******************************************************************************
 	**
@@ -185,20 +185,21 @@ function apiclass() {
     function _LMSFinish(val) {
         WriteToDebug("LMSFinish");
         if (val != '') {
-            API.LastErrorString = "Value passed to LMSFinish, should be blank";
-            API.LastError = "201";
-            API.LastErrorDiagnostic = "Error from API";
+            this.LastErrorString = "Value passed to LMSFinish, should be blank";
+            this.LastError = "201";
+            this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
-        if (!API.initialized) {
-            API.LastErrorString = "LMS is not initialized, call to LMSFinish ignored.";
-            API.LastError = "301";
-            API.LastErrorDiagnostic = "Error from API";
+        if (!this.initialized) {
+            this.LastErrorString = "LMS is not initialized, call to LMSFinish ignored.";
+            this.LastError = "301";
+            this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
         // LMSInfo object carries arguments to the server and back
-        var lmsInfo = JSON.stringify(createLMSInfo(API._sessionid, API._userid, API._coreid, API._scorm_course_id, API._sco_identifier));
+        var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier));
         WriteToDebug("LMSFinish: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
+        var that = this; // get reference to current instance
         $.ajax({
             type: "POST",
             url: "/api/LMSFinish",
@@ -209,25 +210,25 @@ function apiclass() {
             success: LMSFinish_callback,
             error: function (request, error) {
                 // Ajax call failed
-                API.LastError = "101"; //general exception
-                API.LastErrorString = error;
-                API.LastErrorDiagnostic = "AJAX error";
+                that.LastError = "101"; //general exception
+                that.LastErrorString = error;
+                that.LastErrorDiagnostic = "AJAX error";
                 WriteToDebug("Ajax error");
                 WriteToDebug(error.Message);
                 return "false";
             }
         });
-       
+
         // AJAX callback for the LMSFinish call
         function LMSFinish_callback(response) {
             lmsInfo = response.d == null ? response : response.d; // asp.net 3.5 adds the 'd' attribute to the response object
-            API.LastError = lmsInfo.errorCode;
-            API.LastErrorString = lmsInfo.errorString
-            API.LastError = "101";
-            API.LastErrorString = "";
-            API.initialized = false;
+            that.LastError = lmsInfo.errorCode;
+            that.LastErrorString = lmsInfo.errorString
+            that.LastError = "101";
+            that.LastErrorString = "";
+            that.initialized = false;
         }
-        return (API.initialized) ? "true" : "false";
+        return (this.initialized) ? "true" : "false";
     }
 
 	/*******************************************************************************
@@ -245,17 +246,17 @@ function apiclass() {
 	*******************************************************************************/
     function _LMSGetValue(name) {
         WriteToDebug("LMSGetValue");
-        if (!API.initialized) {
-            API.LastErrorString = "LMS is not initialized, call to LMSGetValue ignored.";
-            API.LastError = "301";
-            API.LastErrorDiagnostic = "Error from API";
+        if (!this.initialized) {
+            this.LastErrorString = "LMS is not initialized, call to LMSGetValue ignored.";
+            this.LastError = "301";
+            this.LastErrorDiagnostic = "Error from API";
             return "";
         }
-        var lmsInfo = JSON.stringify(createLMSInfo(API._sessionid, API._userid, API._coreid, API._scorm_course_id, API._sco_identifier, name));
+        var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier, name));
         WriteToDebug("GETVALUE: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
 
         var returnValue = '';
-
+        var that = this; // get reference to current API instance
         $.ajax({
             type: "POST",
             url: "/api/LMSGetValue",
@@ -265,8 +266,8 @@ function apiclass() {
             async: false,
             success: function (response) {
                 lmsInfo = response;
-                API.LastError = lmsInfo.errorCode;
-                API.LastErrorString = lmsInfo.errorString;
+                that.LastError = lmsInfo.errorCode;
+                that.LastErrorString = lmsInfo.errorString;
                 // check error code from server
                 if (lmsInfo.errorCode != "0") {
                     return "false";
@@ -279,9 +280,9 @@ function apiclass() {
             },
             error: function (request, error) {
                 // Ajax call failed
-                API.LastError = "101"; //general exception
-                API.LastErrorString = error;
-                API.LastErrorDiagnostic = "AJAX error";
+                that.LastError = "101"; //general exception
+                that.LastErrorString = error;
+                that.LastErrorDiagnostic = "AJAX error";
                 WriteToDebug("Ajax error");
                 WriteToDebug(error.Message);
                 return "false";
@@ -306,17 +307,18 @@ function apiclass() {
 	*******************************************************************************/
     function _LMSSetValue(name, value) {
         if (name == "cmi.core.lesson_status" || name == "cmi.core.exit") {
-            API._exit_status = value; // set this so LMSFinish knows what to do
+            this._exit_status = value; // set this so LMSFinish knows what to do
         }
-        if (!API.initialized) {
-            API.LastErrorString = "LMS is not initialized, call to LMSSetValue ignored.";
-            API.LastError = "301";
-            API.LastErrorDiagnostic = "Error from API";
+        if (!this.initialized) {
+            this.LastErrorString = "LMS is not initialized, call to LMSSetValue ignored.";
+            this.LastError = "301";
+            this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
-        var lmsInfo = JSON.stringify(createLMSInfo(API._sessionid, API._userid, API._coreid, API._scorm_course_id, API._sco_identifier, name, value));
+        var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier, name, value));
         WriteToDebug("SETVALUE: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
         var returnValue = '';
+        var that = this; // get reference to current API instance
         $.ajax({
             type: "POST",
             url: "/api/LMSSetValue",
@@ -326,8 +328,8 @@ function apiclass() {
             async: false,
             success: function (response) {
                 lmsInfo = response;
-                API.LastError = lmsInfo.errorCode;
-                API.LastErrorString = lmsInfo.errorString
+                that.LastError = lmsInfo.errorCode;
+                that.LastErrorString = lmsInfo.errorString
                 // check error code from server
                 if (lmsInfo.errorCode != "0") {
                     returnValue = "false;"
@@ -340,9 +342,9 @@ function apiclass() {
             },
             error: function (request, error) {
                 // Ajax call failed
-                API.LastError = "101"; //general exception
-                API.LastErrorString = error;
-                API.LastErrorDiagnostic = "AJAX error";
+                that.LastError = "101"; //general exception
+                that.LastErrorString = error;
+                that.LastErrorDiagnostic = "AJAX error";
                 WriteToDebug("Ajax error");
                 WriteToDebug(error.Message);
                 return "false";
@@ -363,15 +365,15 @@ function apiclass() {
     function _LMSCommit(val) {
         // LMSCommit is a no-op since we commit every time.
         if (val != '') {
-            API.LastErrorString = "Value passed to LMSCommit, should be blank";
-            API.LastError = "201";
-            API.LastErrorDiagnostic = "Error from API";
+            this.LastErrorString = "Value passed to LMSCommit, should be blank";
+            this.LastError = "201";
+            this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
-        if (!API.initialized) {
-            API.LastErrorString = "LMS is not initialized, call to LMSCommit ignored.";
-            API.LastError = "301";
-            API.LastErrorDiagnostic = "Error from API";
+        if (!this.initialized) {
+            this.LastErrorString = "LMS is not initialized, call to LMSCommit ignored.";
+            this.LastError = "301";
+            this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
         return "true";
@@ -387,7 +389,7 @@ function apiclass() {
 	**
 	*******************************************************************************/
     function _LMSGetLastError() {
-        return API.LastError;
+        return this.LastError;
     }
 
 	/*******************************************************************************
@@ -401,7 +403,7 @@ function apiclass() {
 	**
 	********************************************************************************/
     function _LMSGetErrorString() {
-        return API.LastErrorString;
+        return this.LastErrorString;
     }
 
 	/*******************************************************************************
@@ -415,7 +417,7 @@ function apiclass() {
 	**
 	*******************************************************************************/
     function _LMSGetDiagnostic() {
-        return API.LastErrorDiagnostic;
+        return this.LastErrorDiagnostic;
     }
 } // end API
 /*********************************************************************************
