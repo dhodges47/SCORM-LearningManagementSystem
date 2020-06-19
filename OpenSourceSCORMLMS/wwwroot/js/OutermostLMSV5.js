@@ -11,9 +11,10 @@
 ** Brattleboro, VT
  **  Rev 5/15/2018 Revised from OutermostLMSV3.js for ThinClient project, using new WebAPI interface
  ** Rev 6/11/2018 Adding error log for debugging, plus debug window
+ * Bug Fix 6/19/2020 Somehow an old bug resurfaced in GetValue and SetValue, where the return value wasn't being returned to the caller
 *******************************************************************************/
 //debug info
-var blnDebug = true;
+var blnDebug = false;
 var aryDebug = new Array();
 var strDebug = "";
 var winDebug;
@@ -155,7 +156,6 @@ function apiclass() {
                 else {
                     API.initialized = true;
                 }
-                if (API._Debug) console.log("Initialized: " + API.initialized);
                 return (API.initialized) ? "true" : "false";
             },
             error: function (request, error) {
@@ -168,6 +168,7 @@ function apiclass() {
                 return "false";
             }
         });
+        return (API.initialized) ? "true" : "false";
     }
 	/*******************************************************************************
 	**
@@ -216,7 +217,7 @@ function apiclass() {
                 return "false";
             }
         });
-
+       
         // AJAX callback for the LMSFinish call
         function LMSFinish_callback(response) {
             lmsInfo = response.d == null ? response : response.d; // asp.net 3.5 adds the 'd' attribute to the response object
@@ -226,6 +227,7 @@ function apiclass() {
             API.LastErrorString = "";
             API.initialized = false;
         }
+        return (API.initialized) ? "true" : "false";
     }
 
 	/*******************************************************************************
@@ -247,11 +249,13 @@ function apiclass() {
             API.LastErrorString = "LMS is not initialized, call to LMSGetValue ignored.";
             API.LastError = "301";
             API.LastErrorDiagnostic = "Error from API";
-            if (API._Debug) console.log("Not Initialized");
             return "";
         }
         var lmsInfo = JSON.stringify(createLMSInfo(API._sessionid, API._userid, API._coreid, API._scorm_course_id, API._sco_identifier, name));
         WriteToDebug("GETVALUE: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
+
+        var returnValue = '';
+
         $.ajax({
             type: "POST",
             url: "/api/LMSGetValue",
@@ -268,7 +272,9 @@ function apiclass() {
                     return "false";
                 }
                 else {
+                    returnValue = lmsInfo.returnValue;
                     return lmsInfo.returnValue;
+
                 }
             },
             error: function (request, error) {
@@ -282,6 +288,9 @@ function apiclass() {
 
             }
         });
+
+        return returnValue;
+
     }
 	/*******************************************************************************
 	**
@@ -296,7 +305,6 @@ function apiclass() {
 	**
 	*******************************************************************************/
     function _LMSSetValue(name, value) {
-        if (API._Debug) console.log("LMSSetValue");
         if (name == "cmi.core.lesson_status" || name == "cmi.core.exit") {
             API._exit_status = value; // set this so LMSFinish knows what to do
         }
@@ -308,6 +316,7 @@ function apiclass() {
         }
         var lmsInfo = JSON.stringify(createLMSInfo(API._sessionid, API._userid, API._coreid, API._scorm_course_id, API._sco_identifier, name, value));
         WriteToDebug("SETVALUE: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
+        var returnValue = '';
         $.ajax({
             type: "POST",
             url: "/api/LMSSetValue",
@@ -321,9 +330,11 @@ function apiclass() {
                 API.LastErrorString = lmsInfo.errorString
                 // check error code from server
                 if (lmsInfo.errorCode != "0") {
+                    returnValue = "false;"
                     return "false";
                 }
                 else {
+                    returnValue = lmsInfo.ReturnValue;
                     return lmsInfo.ReturnValue;
                 }
             },
@@ -337,6 +348,7 @@ function apiclass() {
                 return "false";
             }
         });
+        return returnValue;
     }
 	/*******************************************************************************
 	**
@@ -350,7 +362,6 @@ function apiclass() {
 	*******************************************************************************/
     function _LMSCommit(val) {
         // LMSCommit is a no-op since we commit every time.
-        if (API._Debug) console.log("LMSCommit");
         if (val != '') {
             API.LastErrorString = "Value passed to LMSCommit, should be blank";
             API.LastError = "201";
@@ -376,7 +387,6 @@ function apiclass() {
 	**
 	*******************************************************************************/
     function _LMSGetLastError() {
-        if (API._Debug) console.log("LMSgetLastError");
         return API.LastError;
     }
 
@@ -391,7 +401,6 @@ function apiclass() {
 	**
 	********************************************************************************/
     function _LMSGetErrorString() {
-        if (API._Debug) console.log("LMSGetErrorString");
         return API.LastErrorString;
     }
 
@@ -406,7 +415,6 @@ function apiclass() {
 	**
 	*******************************************************************************/
     function _LMSGetDiagnostic() {
-        if (API._Debug) console.log("LMSGetDiagnostic");
         return API.LastErrorDiagnostic;
     }
 } // end API
