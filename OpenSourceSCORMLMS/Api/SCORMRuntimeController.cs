@@ -19,24 +19,25 @@ namespace OpenSourceSCORMLMS.Api
         Helpers.DatabaseHelper DatabaseHelper { get; set; }
         public SCORMRuntimeController(ILogger<SCORMRuntimeController> logger)
         {
-           
+
             _logger = logger;
             SCORM = new Helpers.SCORMRuntimeHelper(_logger);
             DatabaseHelper = new Helpers.DatabaseHelper(_logger);
         }
-       
+
         // Post api/LMSInitialize
         [HttpPost("/api/LMSInitialize")]
         public JsonResult LMSInitialize([FromBody] LMSInfo o)
         {
             // arguments: sco_identifier, SCORM_course_id, user_id, core_id 
             // (arguments are passed in the LMSInfo object)
-            if ((!SCORM.isInteger(o.scormCourseId)) ||  (!SCORM.isInteger(o.coreId)))
+            if ((o is null || !SCORM.isInteger(o.scormCourseId)) || (!SCORM.isInteger(o.coreId)))
             {
-                o.errorCode = "201";
-                o.errorString = "Invalid or incomplete data, can't initialize";
-                o.returnValue = "false";
-                return Json(o);
+                LMSInfo o1 = new LMSInfo();
+                o1.errorCode = "201";
+                o1.errorString = "Invalid or incomplete data, can't initialize";
+                o1.returnValue = "false";
+                return Json(o1);
             }
 
             // set up data record if needed (this record holds launch, suspend info
@@ -66,6 +67,14 @@ namespace OpenSourceSCORMLMS.Api
             // handle LMSFinish
             // arguments: sessionid, sco_identifier, core_id
             // (arguments are passed in the LMSInfo object)
+            if (o is null)
+            {
+                LMSInfo o1 = new LMSInfo();
+                o1.errorCode = "201";
+                o1.errorString = "Invalid or incomplete data, can't initialize";
+                o1.returnValue = "false";
+                return Json(o1);
+            }
             // close the session
             int id = 0;
             if (DatabaseHelper.ConvertToInt(o.sessionId, out id))
@@ -107,7 +116,7 @@ namespace OpenSourceSCORMLMS.Api
                     {
                         status = lesson_status;
                     }
-                    string Total_time =SCORM.AddCMITime(session_time, total_time);
+                    string Total_time = SCORM.AddCMITime(session_time, total_time);
                     if (Total_time == "false")
                     {
                         Total_time = total_time;
@@ -124,6 +133,14 @@ namespace OpenSourceSCORMLMS.Api
         [HttpPost("/api/LMSGetValue")]
         public JsonResult LMSGetValue([FromBody] LMSInfo o)
         {
+            if (o is null)
+            {
+                LMSInfo o1 = new LMSInfo();
+                o1.errorCode = "201";
+                o1.errorString = "Invalid or incomplete data, can't initialize";
+                o1.returnValue = "false";
+                return Json(o1);
+            }
             SCORM.Getvalue(o);  //The GetValue static class handles all GetValues
             return Json(o);
         }
@@ -132,6 +149,14 @@ namespace OpenSourceSCORMLMS.Api
         [HttpPost("/api/LMSSetValue")]
         public JsonResult LMSSetValue([FromBody] LMSInfo o)
         {
+            if (o is null)
+            {
+                LMSInfo o1 = new LMSInfo();
+                o1.errorCode = "201";
+                o1.errorString = "Invalid or incomplete data, can't initialize";
+                o1.returnValue = "false";
+                return Json(o1);
+            }
             SCORM.Setvalue(o); // the SetValue object takes care of all Setvalue calls
             return Json(o);
 
@@ -142,6 +167,10 @@ namespace OpenSourceSCORMLMS.Api
         public JsonResult LMSCommit([FromBody] LMSInfo o)
         {
             // this is a NOOP since we commit every time.
+            if (o is null)
+            {
+                o = new LMSInfo();
+            }
             o.errorCode = "0";
             o.returnValue = "true";
             o.errorString = "";
