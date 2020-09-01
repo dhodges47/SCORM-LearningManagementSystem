@@ -153,7 +153,7 @@ namespace OpenSourceSCORMLMS.Migrations
                     result = table.Column<string>(maxLength: 13, nullable: true),
                     latency = table.Column<string>(maxLength: 13, nullable: true),
                     core_id = table.Column<int>(nullable: false),
-                    msrepl_tran_version = table.Column<Guid>(nullable: false),
+                    msrepl_tran_version = table.Column<Guid>(nullable: true),
                     description = table.Column<string>(maxLength: 255, nullable: true),
                     timestamp = table.Column<string>(maxLength: 20, nullable: true)
                 },
@@ -188,7 +188,7 @@ namespace OpenSourceSCORMLMS.Migrations
                     speed = table.Column<int>(nullable: true),
                     text = table.Column<int>(nullable: true),
                     user_id = table.Column<int>(nullable: false),
-                    msrepl_tran_version = table.Column<Guid>(nullable: false),
+                    msrepl_tran_version = table.Column<Guid>(nullable: true),
                     audio_captioning = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -334,7 +334,7 @@ namespace OpenSourceSCORMLMS.Migrations
                     score_max = table.Column<decimal>(nullable: true),
                     status = table.Column<string>(maxLength: 14, nullable: true),
                     core_id = table.Column<int>(nullable: false),
-                    msrepl_tran_version = table.Column<Guid>(nullable: false),
+                    msrepl_tran_version = table.Column<Guid>(nullable: true),
                     score_scaled = table.Column<decimal>(nullable: true),
                     progress_measure = table.Column<decimal>(nullable: true),
                     success_status = table.Column<string>(maxLength: 20, nullable: true),
@@ -387,7 +387,7 @@ namespace OpenSourceSCORMLMS.Migrations
                     interaction_n = table.Column<int>(nullable: true),
                     objective_id = table.Column<string>(maxLength: 255, nullable: true),
                     interactions_id = table.Column<int>(nullable: true),
-                    msrepl_tran_version = table.Column<Guid>(nullable: false)
+                    msrepl_tran_version = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {

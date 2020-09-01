@@ -15,7 +15,7 @@ namespace OpenSourceSCORMLMS.Data.ModelSCORM
         public int? speed { get; set; }
         public int? text { get; set; }
         public int user_id { get; set; }
-        public Guid msrepl_tran_version { get; set; }
+        public Guid? msrepl_tran_version { get; set; }
         public int? audio_captioning { get; set; }
     }
 }

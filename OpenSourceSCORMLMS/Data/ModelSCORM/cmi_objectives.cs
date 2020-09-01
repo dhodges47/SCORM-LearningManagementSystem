@@ -18,7 +18,7 @@ namespace OpenSourceSCORMLMS.Data.ModelSCORM
         [StringLength(14)]
         public string status { get; set; }
         public int core_id { get; set; }
-        public Guid msrepl_tran_version { get; set; }
+        public Guid? msrepl_tran_version { get; set; }
         public decimal? score_scaled { get; set; }
         public decimal? progress_measure { get; set; }
         [StringLength(20)]

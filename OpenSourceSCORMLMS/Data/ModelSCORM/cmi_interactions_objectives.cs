@@ -14,7 +14,7 @@ namespace OpenSourceSCORMLMS.Data.ModelSCORM
         [StringLength(255)]
         public string objective_id { get; set; }
         public int? interactions_id { get; set; }
-        public Guid msrepl_tran_version { get; set; }
+        public Guid? msrepl_tran_version { get; set; }
 
         [ForeignKey("interactions_id")]
         [InverseProperty("cmi_interactions_objectives")]

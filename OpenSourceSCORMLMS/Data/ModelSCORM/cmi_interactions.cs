@@ -29,7 +29,7 @@ namespace OpenSourceSCORMLMS.Data.ModelSCORM
         [StringLength(13)]
         public string latency { get; set; }
         public int core_id { get; set; }
-        public Guid msrepl_tran_version { get; set; }
+        public Guid? msrepl_tran_version { get; set; }
         [StringLength(255)]
         public string description { get; set; }
         [StringLength(20)]
