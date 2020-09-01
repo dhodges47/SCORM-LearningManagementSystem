@@ -23,7 +23,7 @@ namespace OpenSourceSCORMLMS.Helpers
             // arguments: sessionid, user_id, sco_identifier, DataItem
             // return: DataValue
             // (arguments are passed in the LMSInfo object)
-            logger.LogInformation("GetValue", o.dataItem + ", " + o.dataValue);
+            logger.LogInformation("GetValue: {o}", o.dataItem + ", " + o.dataValue);
             // initialize return value
             o.errorCode = "0";
             o.returnValue = "true";
@@ -125,6 +125,10 @@ namespace OpenSourceSCORMLMS.Helpers
                     case "cmi.location":
                     case "cmi.core.lesson_location":
                         o.returnValue = DatabaseHelper.GetCMICoreById(core_id).lesson_location;
+                        if (o.returnValue is null)
+                        {
+                            o.returnValue = "";
+                        }
                         break;
                     case "cmi.credit":
                     case "cmi.core.credit":
@@ -161,6 +165,10 @@ namespace OpenSourceSCORMLMS.Helpers
                     case "cmi.suspend_data":
                         cmi_data_id = DatabaseHelper.GetCmiDataID(o.userId, o.scoIdentifier, o.scormCourseId);
                         o.returnValue = DatabaseHelper.GetCMIDataByID(cmi_data_id).suspend_data;
+                        if (o.returnValue is null)
+                        {
+                            o.returnValue = "";
+                        }
                         break;
                     case "cmi.launch_data":
                         cmi_data_id = DatabaseHelper.GetCmiDataID(o.userId, o.scoIdentifier, o.scormCourseId);
@@ -264,10 +272,13 @@ namespace OpenSourceSCORMLMS.Helpers
                 }
 
             }
-            logger.LogInformation("Returning from Getvalue for ", o.dataItem);
-            logger.LogInformation("Returning from Getvalue, ErrorCode ", o.errorCode);
-            logger.LogInformation("Returning from Getvalue, ErrorString  ", o.errorString);
-            logger.LogInformation("Returning from Getvalue, returnValue is ", o.returnValue);
+            object[] arg = new object[3];
+            arg[0] = o.dataItem;
+            arg[1] = o.returnValue;
+            arg[2] = o.errorCode;
+            logger.LogInformation("Returning from Getvalue for {0}, return value is {1}, error is {2} ", arg);
+
+           
         }
         // Helper function for LMSGetvalue
         // Returns value for all Interactions requests
@@ -479,7 +490,7 @@ namespace OpenSourceSCORMLMS.Helpers
         }
         public void Setvalue(LMSInfo o)
         {
-            logger.LogInformation("SetValue", o.dataItem + ", " + o.dataValue);
+            logger.LogInformation("SetValue: {o}", o.dataItem + ", " + o.dataValue);
             // arguments: user_id, sco_identifier, DataItem, DataValue
             // (arguments are passed in the LMSInfo object)
             string ReturnValue = "true";
@@ -903,10 +914,14 @@ namespace OpenSourceSCORMLMS.Helpers
 
 
             }
-            logger.LogInformation("Returning from Setvalue for ", o.dataItem);
-            logger.LogInformation("Returning from Setvalue, ErrorCode ", o.errorCode);
-            logger.LogInformation("Returning from Setvalue, ErrorString  ", o.errorString);
-            logger.LogInformation("Returning from Setvalue, returnValue is ", o.returnValue);
+            object[] arg = new object[3];
+            arg[0] = o.dataItem;
+            arg[1] = o.returnValue;
+            arg[2] = o.errorCode;
+            logger.LogInformation("Returning from Setvalue for {0}, return value is {1}, error is {2} ", arg);
+            //logger.LogInformation("Returning from Setvalue, ErrorCode  {o} ", o.errorCode);
+            //logger.LogInformation("Returning from Setvalue, ErrorString  {o}  ", o.errorString);
+           // logger.LogInformation("Returning from Setvalue, returnValue is {o}  ", o.returnValue);
         }
         private void SetValueStudentPreference(LMSInfo o)
         {
