@@ -1362,8 +1362,8 @@ namespace OpenSourceSCORMLMS.Helpers
                             next_n += 1; //increment existing one
                         }
                         // compare next_n to the "n" that they sent
-                        if (next_n == n)
-                        {
+                     //   if (next_n == n)
+                      //  {
                             cmi_objectives co = new cmi_objectives();
                             co.n = next_n;
                             co.status = "not attempted";
@@ -1372,12 +1372,12 @@ namespace OpenSourceSCORMLMS.Helpers
                             context.SaveChanges();
                             id = co.id;
                             return id;
-                        }
-                        else
-                        {
-                            // the "n" they supplied is out of sequence
-                            return -1;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    // the "n" they supplied is out of sequence
+                        //    return -1;
+                        //}
                     }
                 }
             }
