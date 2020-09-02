@@ -240,7 +240,7 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                  
+
                     DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
                     cmd.CommandText = s;
                     cmd.Parameters.Add(new SqlParameter("@core_id", SqlDbType.Int) { Value = core_id });
@@ -647,8 +647,16 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                    var cmi_interactions = context.cmi_interactions.FromSql($"select id from dbo.cmi_interactions where core_id = {cmi_core_id} AND n = {n}").FirstOrDefault();
-                    id = cmi_interactions.id;
+
+                    var cmi_interactions = context.cmi_interactions.Where(ix => ix.core_id == cmi_core_id && ix.n == n).FirstOrDefault();
+                    if (cmi_interactions != null)
+                    {
+                        id = cmi_interactions.id;
+                    }
+                    else
+                    {
+                        id = 0;
+                    }
                 }
             }
             catch (Exception ex)
@@ -668,25 +676,27 @@ namespace OpenSourceSCORMLMS.Helpers
                     {
                         // doesn't exist, have to insert it
                         // first, get highest "n"
-                        DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
-                        cmd.CommandText = "select COALESCE(max(n)+1,0) as n from dbo.cmi_interactions where core_id=@cmi_core_id";
-                        cmd.Parameters.Add(new SqlParameter("@cmi_core_id", SqlDbType.Int) { Value = cmi_core_id });
-                        int max_n = (int)cmd.ExecuteScalar();
-                        if (max_n == n)
-                        {
+                        //DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
+                        //cmd.CommandText = "select COALESCE(max(n)+1,0) as n from dbo.cmi_interactions where core_id=@cmi_core_id";
+                        //cmd.Parameters.Add(new SqlParameter("@cmi_core_id", SqlDbType.Int) { Value = cmi_core_id });
+                        //if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
+                        //int max_n = (int)cmd.ExecuteScalar();
+                        //if (max_n == n)
+                        //{
                             DbCommand cmd1 = context.Database.GetDbConnection().CreateCommand();
                             cmd1.CommandText = "INSERT dbo.cmi_interactions(n, core_id) output INSERTED.ID VALUES(@n, @cmi_core_id)";
                             // they supplied the correct value
                             cmd1.Parameters.Add(new SqlParameter("@cmi_core_id", SqlDbType.Int) { Value = cmi_core_id });
                             cmd1.Parameters.Add(new SqlParameter("@n", SqlDbType.Int) { Value = n });
-                            id = (int)cmd.ExecuteNonQuery();
+                            if (cmd1.Connection.State.Equals(ConnectionState.Closed)) { cmd1.Connection.Open(); }
+                            id = (int)cmd1.ExecuteNonQuery();
                             return id;
-                        }
-                        else
-                        {
-                            // they supplied an incorrect value
-                            return -1;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    // they supplied an incorrect value
+                        //    return -1;
+                        //}
                     }
                 }
                 catch (Exception ex)
@@ -1103,6 +1113,8 @@ namespace OpenSourceSCORMLMS.Helpers
                         DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
                         cmd.CommandText = "select COALESCE(max(n)+1,0) as n from dbo.cmi_comment_from_learner where core_id=@core_id";
                         cmd.Parameters.Add(new SqlParameter("@core_id", SqlDbType.Int) { Value = core_id });
+                        context.Database.GetDbConnection().CreateCommand();
+                        if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                         int max_n = (int)cmd.ExecuteScalar();// first, get highest "n"
                         if (max_n == n)
                         {
@@ -1185,6 +1197,7 @@ namespace OpenSourceSCORMLMS.Helpers
                     cmd.CommandText = s;
                     cmd.Parameters.Add(new SqlParameter("@comment_id", SqlDbType.Int) { Value = comment_id });
                     cmd.Parameters.Add(new SqlParameter("@comment", SqlDbType.VarChar) { Value = comment });
+                    if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -1205,6 +1218,7 @@ namespace OpenSourceSCORMLMS.Helpers
                     cmd.CommandText = s;
                     cmd.Parameters.Add(new SqlParameter("@interactions_id", SqlDbType.Int) { Value = interactions_id });
                     cmd.Parameters.Add(new SqlParameter("@sDataValue", SqlDbType.VarChar) { Value = sDataValue });
+                    if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -1278,6 +1292,7 @@ namespace OpenSourceSCORMLMS.Helpers
                         cmd.CommandText = "select COALESCE(max(n) + 1, 0) as n from dbo.cmi_comment_from_lms where SCORM_Course_id =@SCORM_Course_id and SCO_identifier=@SCO_id";
                         cmd.Parameters.Add(new SqlParameter("@SCORM_Course_id", SqlDbType.Int) { Value = SCORM_Course_id });
                         cmd.Parameters.Add(new SqlParameter("@SCO_id", SqlDbType.VarChar) { Value = SCO_identifier });
+                        if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                         int max_n = (int)cmd.ExecuteScalar();// first, get highest "n"
                         if (max_n == n)
                         {
@@ -1335,6 +1350,7 @@ namespace OpenSourceSCORMLMS.Helpers
                         DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
                         cmd.CommandText = "SELECT coalesce(max(n),-1) from dbo.cmi_objectives where core_id = @core_id";
                         cmd.Parameters.Add(new SqlParameter("@core_id", SqlDbType.Int) { Value = core_id });
+                        if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                         int next_n = (int)cmd.ExecuteScalar();// first, get highest "n"
 
                         if (next_n == -1)
@@ -1402,6 +1418,7 @@ namespace OpenSourceSCORMLMS.Helpers
                         DbCommand cmd = context.Database.GetDbConnection().CreateCommand();
                         cmd.CommandText = "select COALESCE(max(n)+1,0) as n from dbo.cmi_interactions_correct_responses where interactions_id=@interactions_id";
                         cmd.Parameters.Add(new SqlParameter("@interactions_id", SqlDbType.Int) { Value = interactions_id });
+                        if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
                         int max_n = (int)cmd.ExecuteScalar();// first, get highest "n"
                         if (max_n == n)
                         {
