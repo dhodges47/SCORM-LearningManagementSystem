@@ -685,11 +685,10 @@ namespace OpenSourceSCORMLMS.Helpers
                         //{
                             DbCommand cmd1 = context.Database.GetDbConnection().CreateCommand();
                             cmd1.CommandText = "INSERT dbo.cmi_interactions(n, core_id) output INSERTED.ID VALUES(@n, @cmi_core_id)";
-                            // they supplied the correct value
                             cmd1.Parameters.Add(new SqlParameter("@cmi_core_id", SqlDbType.Int) { Value = cmi_core_id });
                             cmd1.Parameters.Add(new SqlParameter("@n", SqlDbType.Int) { Value = n });
                             if (cmd1.Connection.State.Equals(ConnectionState.Closed)) { cmd1.Connection.Open(); }
-                            id = (int)cmd1.ExecuteNonQuery();
+                            id = (int)cmd1.ExecuteScalar();
                             return id;
                         //}
                         //else
@@ -1097,10 +1096,10 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                    var iy = context.cmi_comment_from_learner.Where(ix => ix.core_id == core_id).FirstOrDefault();
-                    if (iy != null)
+                    var cmi_comment_from_learner = context.cmi_comment_from_learner.Where(ix => ix.core_id == core_id).FirstOrDefault();
+                    if (cmi_comment_from_learner != null)
                     {
-                        id = iy.id;
+                        id = cmi_comment_from_learner.id;
                     }
                     if (id > 0)
                     {
@@ -1115,9 +1114,9 @@ namespace OpenSourceSCORMLMS.Helpers
                         cmd.Parameters.Add(new SqlParameter("@core_id", SqlDbType.Int) { Value = core_id });
                         context.Database.GetDbConnection().CreateCommand();
                         if (cmd.Connection.State.Equals(ConnectionState.Closed)) { cmd.Connection.Open(); }
-                        int max_n = (int)cmd.ExecuteScalar();// first, get highest "n"
-                        if (max_n == n)
-                        {
+                        int max_n = (int)cmd.ExecuteScalar();//get new highest "n"
+                        //if (max_n == n)
+                        //{
                             // they supplied the correct value
                             cmi_comment_from_learner cml = new cmi_comment_from_learner();
                             cml.n = n;
@@ -1127,12 +1126,12 @@ namespace OpenSourceSCORMLMS.Helpers
 
                             id = cml.id;
                             return id;
-                        }
-                        else
-                        {
-                            // they supplied an incorrect value
-                            return -1;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    // they supplied an incorrect value
+                        //    return -1;
+                        //}
                     }
                     else
                     {
