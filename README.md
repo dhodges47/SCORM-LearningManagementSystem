@@ -30,11 +30,4 @@ It gives the ability to upload SCORM packages, play the courses in the built-in 
  3. Add the SCORM course to your courses (Main Menu: "All Courses". Click on your course and then click "Package Details", then click "Add to my study area".
  4. Run the course (Main Menu: My Courses for Study, then click "Launch this course"
  
-# Consulting: 
-
-Need help customizing this Application? Outermost Software can help!
-    
-   * Installation
-   * Enhancements
-   * .Net Programming
         
