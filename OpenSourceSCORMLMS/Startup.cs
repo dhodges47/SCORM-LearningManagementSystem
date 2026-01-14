@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Newtonsoft.Json.Serialization;
+using Microsoft.Extensions.Hosting;
 using OpenSourceSCORMLMS.Data;
 using System.IO;
 
@@ -32,25 +32,29 @@ namespace OpenSourceSCORMLMS
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddSingleton<IConfiguration>(Configuration);
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services
-                .AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver()); //prevent JsonResult from camelCasing on its own
+            services.Configure<JsonOptions>(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+            });
+            services.AddControllers();
+            services.AddRazorPages();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
                 
             }
             else
@@ -59,25 +63,27 @@ namespace OpenSourceSCORMLMS
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseStaticFiles(); // For the wwwroot folder
+            app.UseRouting();
+            app.UseCookiePolicy();
             app.UseAuthentication();
+            app.UseAuthorization();
             // the purpose of the HtmlHandler is to make sure that when people are running SCORM courses (i.e. native html files) that they are authenticated
             app.UseHtmlHandler();
-           
-            app.UseStaticFiles(); // For the wwwroot folder
-            
-            app.UseCookiePolicy();
-
-            app.UseAuthentication();
-           
-            app.UseMvc();
             var httpContextAccessor = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>();
             Helpers.ConfigurationHelper.Initialize(Configuration, httpContextAccessor);
             // we run SCORM courses out of its own folder (NOT wwwroot) so that HtmlHandler can check for authentication before returning any SCORM content
+            var scormCoursesPath = Path.Combine(env.ContentRootPath, Helpers.ConfigurationHelper.CourseFolder);
+            Directory.CreateDirectory(scormCoursesPath);
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(env.ContentRootPath,  Helpers.ConfigurationHelper.CourseFolder)),
+                FileProvider = new PhysicalFileProvider(scormCoursesPath),
                 RequestPath = "/SCORMCourses"
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
 
         }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Data;
 using System.Text;
