@@ -18,10 +18,10 @@ namespace OpenSourceSCORMLMS.Pages
         public string sIframeSrc { get; set; }
         private readonly UserManager<IdentityUser> _userManager;
         private IConfiguration _configuration;
-        private IHostingEnvironment _environment;
+        private IWebHostEnvironment _environment;
         private ILogger _logger { get; set; }
         private Helpers.DatabaseHelper databaseHelper { get; set; }
-        public SCORMPlayerModel(UserManager<IdentityUser> User, IConfiguration Configuration, IHostingEnvironment hostingEnvironment, ILogger<UploadFileModel> logger)
+        public SCORMPlayerModel(UserManager<IdentityUser> User, IConfiguration Configuration, IWebHostEnvironment hostingEnvironment, ILogger<UploadFileModel> logger)
         {
             _userManager = User;
             _configuration = Configuration;

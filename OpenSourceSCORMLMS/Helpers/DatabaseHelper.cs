@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 namespace OpenSourceSCORMLMS.Helpers
 {
@@ -150,6 +150,11 @@ namespace OpenSourceSCORMLMS.Helpers
                 using (var context = ConnectionHelper.getContext())
                 {
                     var session = context.session.Where(ix => ix.id == id).FirstOrDefault();
+                    if (session == null)
+                    {
+                        logger.LogWarning("UpdateSession: session id {SessionId} not found.", id);
+                        return;
+                    }
                     session.enddatetime = enddatetime;
                     context.SaveChanges();
                 }
@@ -571,7 +576,7 @@ namespace OpenSourceSCORMLMS.Helpers
                 using (var context = ConnectionHelper.getContext())
                 {
                     listCourses = context.SCORM_Course_FromSP
-                      .FromSql($"dbo.Sel_CoursesWithUserIndicator {UserId}")
+                      .FromSqlInterpolated($"dbo.Sel_CoursesWithUserIndicator {UserId}")
                       .ToList();
                 }
             }
@@ -612,7 +617,9 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                    var cmi_core = context.cmi_core.FromSql($"dbo.Sel_CoreTrackingID {iSCORM_Course_ID},{UserId} ").FirstOrDefault();
+                    var cmi_core = context.cmi_core
+                        .FromSqlInterpolated($"dbo.Sel_CoreTrackingID {iSCORM_Course_ID},{UserId} ")
+                        .FirstOrDefault();
                     iCoreID = cmi_core.core_id;
                 }
             }
@@ -629,7 +636,9 @@ namespace OpenSourceSCORMLMS.Helpers
             {
                 using (var context = ConnectionHelper.getContext())
                 {
-                    var session = context.session.FromSql($"dbo.Sel_SessionID {iSCORM_Course_ID},  null, {UserId}, {sessionid}, {iCore_id}, {dtStartTime}").FirstOrDefault();
+                    var session = context.session
+                        .FromSqlInterpolated($"dbo.Sel_SessionID {iSCORM_Course_ID},  null, {UserId}, {sessionid}, {iCore_id}, {dtStartTime}")
+                        .FirstOrDefault();
                     iSessionID = session.id;
                 }
             }
