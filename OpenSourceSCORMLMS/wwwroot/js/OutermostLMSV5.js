@@ -315,7 +315,7 @@ function apiclass() {
             this.LastErrorDiagnostic = "Error from API";
             return "false";
         }
-        var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier, name, value));
+        var lmsInfo = JSON.stringify(createLMSInfo(this._sessionid, this._userid, this._coreid, this._scorm_course_id, this._sco_identifier, name, value.toString()));
         WriteToDebug("SETVALUE: " + JSON.stringify({ 'lmsInfo': lmsInfo }));
         var returnValue = '';
         var that = this; // get reference to current API instance
