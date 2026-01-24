@@ -336,8 +336,8 @@ function apiclass() {
                     return "false";
                 }
                 else {
-                    returnValue = lmsInfo.ReturnValue;
-                    return lmsInfo.ReturnValue;
+                    returnValue = lmsInfo.returnValue;
+                    return lmsInfo.returnValue;
                 }
             },
             error: function (request, error) {
